@@ -12,7 +12,8 @@ source /home/linuxbrew/.linuxbrew/Cellar/zsh-syntax-highlighting/0.8.0/share/zsh
 
 # keybindings
 bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5D" backward-word 
+bindkey "^[[Z" reverse-menu-complete # enables shift+tab
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
