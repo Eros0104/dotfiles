@@ -6,9 +6,9 @@ prompt adam1
 
 setopt histignorealldups sharehistory
 
-# Enable zsh-autosuggestions
-source /home/linuxbrew/.linuxbrew/Cellar/zsh-autosuggestions/0.7.0/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/linuxbrew/.linuxbrew/Cellar/zsh-syntax-highlighting/0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Brew imports
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # keybindings
 bindkey "^[[1;5C" forward-word
