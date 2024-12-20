@@ -11,12 +11,12 @@ setopt SHARE_HISTORY     # Share history between sessions
 
 # ===================== Prompt ====================
 
-PURE_GIT_PULL = 0 # Prevents pure from git pulling when cding into dir
+PURE_GIT_PULL=0 # Prevents pure from git pulling when cding into dir
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  fpath += ("$(brew --prefix)/share/zsh/site-functions")
+  fpath+=("$(brew --prefix)/share/zsh/site-functions")
 else
-  fpath += ($HOME/.zsh/pure)
+  fpath+=($HOME/.zsh/pure)
 fi
 
 autoload -U promptinit; promptinit
