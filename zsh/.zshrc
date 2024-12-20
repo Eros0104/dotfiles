@@ -47,3 +47,11 @@ compinit
 # ls
 alias la='ls -lathr'
 
+
+# ====================== Paths ====================
+
+if [ -f ~/.zsh_paths ]; then
+  source ~/.zsh_paths
+fi
+
+
