@@ -42,3 +42,8 @@ autoload -Uz compinit
 compinit
 
 
+# ==================== Aliases ====================
+
+# ls
+alias la='ls -lathr'
+
