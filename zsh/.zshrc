@@ -28,6 +28,7 @@ prompt pure
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word 
 bindkey "^[[Z" reverse-menu-complete # enables shift+tab
+bindkey "^?" backward-delete-char # improve backspace on vi mode
 
 
 # =================== Plugins  ====================
@@ -53,5 +54,11 @@ alias la='ls -lathr'
 if [ -f ~/.zsh_paths ]; then
   source ~/.zsh_paths
 fi
+
+
+# ======================= Misc ====================
+
+# enable vim motions
+set -o vi
 
 
