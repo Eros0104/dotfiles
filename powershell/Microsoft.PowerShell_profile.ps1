@@ -1,4 +1,4 @@
-# Changes terminal encoding to prevent terminal crash because of my last name
+# Set powershell encoding to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 # Loads oh my posh theme
