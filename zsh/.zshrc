@@ -25,10 +25,10 @@ prompt pure
 
 # ================ Keybindings ====================
 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word 
-bindkey "^[[Z" reverse-menu-complete # enables shift+tab
-bindkey "^?" backward-delete-char # improve backspace on vi mode
+bindkey "^[[1;5C" forward-word       # Move the cursor to the next word (Ctrl+→)
+bindkey "^[[1;5D" backward-word      # Move the cursor to the previous word (Ctrl+←)
+bindkey "^[[Z" reverse-menu-complete # Enables reverse navigation in autocomplete (Shift+Tab)
+bindkey -v "^?" backward-delete-char # Fixes Backspace behavior in vi mode
 
 
 # =================== Plugins  ====================
