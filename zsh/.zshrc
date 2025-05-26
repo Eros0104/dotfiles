@@ -48,6 +48,9 @@ compinit
 # ls
 alias la='ls -lathr'
 
+# go
+alias gocov='go test -coverprofile=cover.out && go tool cover -html=cover.out'
+alias gocovr='go test ./... -coverprofile=cover.out && go tool cover -html=cover.out'
 
 # ====================== Paths ====================
 
@@ -55,6 +58,9 @@ if [ -f ~/.zsh_paths ]; then
   source ~/.zsh_paths
 fi
 
+if [ -f ~/.zsh_extras ]; then
+  source ~/.zsh_extras
+fi
 
 # ======================= Misc ====================
 
