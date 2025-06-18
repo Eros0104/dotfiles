@@ -52,6 +52,10 @@ alias la='ls -lathr'
 alias gocov='go test -coverprofile=cover.out && go tool cover -html=cover.out'
 alias gocovr='go test ./... -coverprofile=cover.out && go tool cover -html=cover.out'
 
+# docker
+alias wakethewhale='docker start $(docker container list -qa)'  # start all containers
+alias zapthewhale='docker restart $(docker container list -qa)' # restart all containers
+
 # ====================== Paths ====================
 
 if [ -f ~/.zsh_paths ]; then
