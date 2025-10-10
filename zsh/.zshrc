@@ -55,6 +55,7 @@ alias gocovr='go test ./... -coverprofile=cover.out && go tool cover -html=cover
 # docker
 alias wakethewhale='docker start $(docker container list -qa)'  # start all containers
 alias zapthewhale='docker restart $(docker container list -qa)' # restart all containers
+alias dropthewhale='docker stop $(docker container list -qa)'   # stop all containers
 
 # ====================== Paths ====================
 
