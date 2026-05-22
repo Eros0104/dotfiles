@@ -1,3 +1,10 @@
+# ===================== Paths ====================
+# Loaded first so PATH/FPATH are set before compinit, prompt, etc.
+
+if [ -f ~/.zsh_paths ]; then
+  source ~/.zsh_paths
+fi
+
 # ==================== History ====================
 
 HISTFILE=~/.zsh_history
@@ -57,19 +64,19 @@ alias wakethewhale='docker start $(docker container list -qa)'  # start all cont
 alias zapthewhale='docker restart $(docker container list -qa)' # restart all containers
 alias dropthewhale='docker stop $(docker container list -qa)'   # stop all containers
 
-# ====================== Paths ====================
-
-if [ -f ~/.zsh_paths ]; then
-  source ~/.zsh_paths
-fi
+# ==================== Extras =====================
 
 if [ -f ~/.zsh_extras ]; then
   source ~/.zsh_extras
+fi
+
+# ==================== Private ====================
+
+if [ -f ~/dev/dotfiles-private/index.zsh ]; then
+  source ~/dev/dotfiles-private/index.zsh
 fi
 
 # ======================= Misc ====================
 
 # enable vim motions
 set -o vi
-
-
