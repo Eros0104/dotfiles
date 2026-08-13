@@ -80,3 +80,9 @@ fi
 
 # enable vim motions
 set -o vi
+
+# Added by dbt installer
+export PATH="$PATH:/Users/erosmendonca/.local/bin"
+
+# dbt aliases
+alias dbtf=/Users/erosmendonca/.local/bin/dbt
