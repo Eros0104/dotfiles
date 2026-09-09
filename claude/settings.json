@@ -1,25 +1,29 @@
 {
-  "editorMode": "vim",
-  "effortLevel": "xhigh",
+  "model": "opus[1m]",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/erosmendonca/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/erosmendonca/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
-  },
-  "model": "claude-fable-5[1m]",
-  "tui": "fullscreen"
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "editorMode": "vim"
 }
