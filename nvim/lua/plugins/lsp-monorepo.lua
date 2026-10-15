@@ -6,8 +6,8 @@
 -- than its nearest package.json. Generic — a no-op in single-language repos.
 --
 -- root_dir is assigned in function-form opts so it runs AFTER LazyVim merges
--- the lang.deno / lang.typescript extras' table-opts, and therefore wins
--- deterministically (the deno extra otherwise roots denols at ANY ancestor
+-- the lang.typescript extra's table-opts, and therefore wins
+-- deterministically (denols' default root_dir otherwise matches ANY ancestor
 -- deno.json — including a monorepo root — and steals frontend files from vtsls).
 local function nearest(fname, ...)
   return require("lspconfig.util").root_pattern(...)(fname)
@@ -32,7 +32,6 @@ end
 
 return {
   { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.lang.deno" },
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
