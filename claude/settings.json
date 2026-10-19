@@ -1,9 +1,9 @@
 {
-  "model": "opus[1m]",
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -25,5 +25,39 @@
   },
   "effortLevel": "xhigh",
   "tui": "fullscreen",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: Dealroom (github.com/dealroom org; repo dealroom/ecosystems-service)",
+      "**Cloud provider(s)**: Google Cloud Platform (GCS, GCP projects referenced in Terraform/IAM docs)",
+      "**Repository visibility**: Private (dealroom/ecosystems-service — confirmed via gh)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: GCP Secret Manager (per-environment secrets projects, e.g. `core-platform-*-secrets`, `data-platform-*-secrets`); CI secrets referenced in GitHub Actions (ANTHROPIC_API_KEY, CODECOV_TOKEN, CODE_READER_APP_ID/PRIVATE_KEY, DEALROOMBA_APP_ID/PRIVATE_KEY, DEALROOM_APPROVER_APP_ID/PRIVATE_KEY, DEALROOM_TOOLING_APP_ID/PRIVATE_KEY, DOCKERHUB_TOKEN/USERNAME, ELASTICSEARCH_PASSWORD/USERNAME, GITHUB_TOKEN, SENTRY_AUTH_TOKEN, SLACK_ACCESS_TOKEN, SONAR_TOKEN) — names only, not values",
+      "**Default / protected branches**: Default branch `main`; protected branches: `main` (gh-confirmed); multiple active rulesets apply (Enterprise Custom Agent Configuration, IP Protection, Copilot Auto Review, Branch Protection, Up-to-date Branch, plus unnamed additional rulesets) — treat `main` as fully protected even where classic branch-protection listing is sparse",
+      "**CI/CD deploy targets**: GitHub Actions workflows (`.github/workflows/release_prod.yml`, `reusable_helm_test.yml`, `reusable_terraform.yml`); container images pushed to `europe-docker.pkg.dev`; Helm/Terraform deploys to GCP environments (development, beta, production) under this repo's `terraform/environments/*`",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
+      "**Source control**: dealroom/ecosystems-service and its configured remote (origin, github.com/dealroom/ecosystems-service) only",
+      "**Trusted internal domains**: dealroom.dev (staging Auth0: accounts.staging.dealroom.dev), dealroom.local (ecosystems-admin.dealroom.local, dev-only)",
+      "**Trusted cloud buckets**: dealroom-terraform-state (config-derived — not a confirmed upload destination; uploads of local data still require confirmation)",
+      "**Key internal services**: Auth0 (accounts.staging.dealroom.dev), Valkey (valkey:6379, local/dev), gRPC server (ecosystems-service-server), SonarCloud (dealroom_ecosystems-service project), Codecov",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: `.env`, `*key.json`, `public-key.asc` (gitignored secret-shaped files); `charts/ecosystems-service/templates/external-secret.yaml`; `.claude/hooks/pre-tool-secrets-guard.sh`; Terraform state and backend/provider files under `terraform/environments/{beta,development,production}/`; share only with audiences cleared at the named+specifics bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace/host/container matching `prod`/`production` as a whole segment — e.g. `terraform/environments/production/*`, `release_prod.yml`, GCP `*-production-secrets` projects, prod Terraform state paths under `dealroom-terraform-state`",
+      "**Protected deployment namespaces / environments**: `production` environment (Terraform `terraform/environments/production/`, `release_prod.yml`, and any `*-production-*` GCP project) treated as protected; `beta` and `development` are lower-risk but still CI/CD managed",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, node-pool resources per `.claude/rules/platform-conventions.md` (org-infra-only resources: projects/folders, org/folder policies and IAM, billing budgets, Cloud Identity groups, shared VPC/networking/DNS); anything tagged/named `prod`/`production`; Terraform state bucket `dealroom-terraform-state` paths (never reuse/collide a state prefix)",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Go gRPC service + Terraform/Helm infra for Dealroom's Ecosystems Service)",
+      "**Trusted repo**: dealroom/ecosystems-service (private) and its origin remote at github.com/dealroom/ecosystems-service",
+      "**Org-specific CLIs**: room (PR/lint/worktree tooling), gh, deno, bun, mise, dbt, db-proxy/alloydb-proxy, gcloud, sandman, herdr, drd, clera",
+      "**Routine under this repo's working tree**: lint/test/build and Terraform plan-only operations under `/Users/erosmendonca/dev/ecosystems-service` are routine development activity"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(terraform apply:*) in terraform/environments/production/*",
+      "Bash(git push --force:*) on main"
+    ]
+  }
 }
