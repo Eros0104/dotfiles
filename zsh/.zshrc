@@ -64,6 +64,9 @@ alias wakethewhale='docker start $(docker container list -qa)'  # start all cont
 alias zapthewhale='docker restart $(docker container list -qa)' # restart all containers
 alias dropthewhale='docker stop $(docker container list -qa)'   # stop all containers
 
+# git
+alias wtprune='git worktree list | awk "/^worktree /{print \$2}" | tail -n +2 | xargs -n1 git worktree remove --force'
+
 # ==================== Extras =====================
 
 if [ -f ~/.zsh_extras ]; then
